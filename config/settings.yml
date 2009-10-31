@@ -1,0 +1,19 @@
+defaults: &defaults
+  :mongodb:
+    :host: localhost
+    :port: 27017
+ 
+:development:
+  <<: *defaults
+  :mongodb:
+    :database: mongo_development
+  
+:test:
+  <<: *defaults
+  :mongodb:
+    :database: mongo_test
+
+:production:
+  <<: *defaults
+  :mongodb:
+    :database: mongo_production

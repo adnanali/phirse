@@ -2,6 +2,9 @@ require 'maruku'
 
 class Main
   helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
+
     def root_url
       @root_url ||= settings(:root_url)
     end

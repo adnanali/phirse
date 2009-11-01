@@ -564,14 +564,17 @@ body {
 
 .flash_error {
   border: 2px solid red;
+  background-color: lightcoral;
 }
 
 .flash_notice {
-  border: 2px solid yellow;
+  border: 2px solid gold;
+  background-color: yellow;
 }
 
 .flash_success {
   border: 2px solid green;
+  background-color: lightgreen;
 }
 
 .content_list .time {

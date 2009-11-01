@@ -1,8 +1,5 @@
-require ROOT_DIR + '/app/models/content_uploader.rb'
 class Content
   include MongoMapper::Document
-
-  mount_uploader :file, ContentUploader
 
   key :ctype, String, :required => true
 

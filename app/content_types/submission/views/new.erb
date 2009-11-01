@@ -1,0 +1,106 @@
+<form action="/content/create" class="new_content admin_form" enctype="multipart/form-data" id="new_content" method="post">
+    <input id="content_ctype" name="content[ctype]" size="30" type="hidden" value="<%= params[:ctype] %>" />
+  <p> 
+    <label for="content_title">Title</label>
+    <input id="content_title" name="content[title]" size="30" type="text" />
+  </p>
+  <p style="display: none;"> 
+    <label for="content_slug">Slug</label>
+    <input id="content_slug" name="content[slug]" size="30" type="text" />
+  </p>
+  <p> 
+    <label for="content_content_body">Description</label>
+    <textarea cols="40" id="content_body" name="content[content][body]" rows="10"></textarea>
+  </p>
+
+  <p> 
+    <label for="content_content_original_language">Language</label>
+    <input id="content_content_original_language" name="content[content][original_language]" size="30" type="text" />
+  </p>
+  <p> 
+    <label for="content_content_original_words">Words</label>
+    <textarea cols="40" id="content_content_original_words" name="content[content][original_words]" rows="20"></textarea>
+  </p>
+  <p> 
+    <label for="content_content_author">Author</label>
+    <input id="content_content_author" name="content[content][author]" size="30" type="text" />
+  </p>
+  <p> 
+    <label for="content_content_source">Source</label>
+    <input id="content_content_source" name="content[content][source]" size="30" type="text" />
+  </p>
+
+  <div id="words_form">
+  </div>
+  <p> 
+    <a href="#" id="more_words">More Langauges</a>
+  </p>
+  <script type="text/javascript">
+    $("#more_words").click(function() {
+      $("#words_form").append(
+'  <p> ' +
+'    <label for="content_content_languages_">Language</label>' +
+'    <input id="content_slug" name="content[content][languages][]" size="30" type="text" />' +
+'  </p>' +
+'  <p> ' +
+'    <label for="content_content_words_">Words</label>' +
+'    <textarea cols="40" id="content_content_words_" name="content[content][words][]" rows="20"></textarea>' +
+'  </p>' +
+'  <p> ' +
+'    <label for="content_content_author">Translator</label>' +
+'    <input id="content_slug" name="content[content][translators][]" size="30" type="text" />' +
+'  </p>' +
+'  <p> ' +
+'    <label for="content_content_author">Translation Source</label>' +
+'    <input id="content_slug" name="content[content][translation_sources][]" size="30" type="text" />' +
+'  </p>' 
+      );
+      return false;
+    });
+  </script>
+
+
+  <p> 
+    <label for="content_content_reading_language">Reading Language</label>
+    <input id="content_content_reading_language" name="content[content][reading_language]" size="30" type="text" />
+  </p>
+  <p> 
+  <label for="content_file">Upload Reading</label>
+    <input id="content_file" name="file" size="30" type="file" />
+  </p>
+  <input id="content_content_file" name="content[content][file]" type="hidden" />
+
+  <p> 
+    <input name="commit" type="submit" value="Save" />
+  </p>
+</form>
+
+<script type="text/javascript">
+$(function() {
+  $('#content_file').uploadify({
+      'uploader'  : '/swf/uploadify.swf',
+      'script'    : '/content/upload',
+      'cancelImg' : '/images/cancel.png',
+      'folder' : '/uploads',
+      'onComplete' : function(event, q, file, response, data) {
+      $("#content_content_file").val(response);
+      $.data($("#new_content").get(0), "file_uploaded", true);
+      $(".uploadifyQueueItem .cancel").hide();
+      var submitted = $.data($("#new_content").get(0), "submitted");
+      if (submitted) {
+        $("#new_content").submit();
+      }
+      return false}, 
+      'auto'      : true
+    });
+});
+$("#new_content").submit(function() {
+  var value = $.data($("#new_content").get(0), "file_uploaded");
+  $.data($("#new_content").get(0), "submitted", true);
+  if (!value) {
+    return false;
+  }
+  $(this).ajaxSubmit({'dataType': 'script'});
+  return false;
+}); 
+</script>

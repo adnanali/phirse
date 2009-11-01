@@ -1,8 +1,34 @@
+require 'mongo/gridfs'
+
 class Main
   # content 
   get '/content/?' do
     @contents = Content.all
     erb :'content/index'
+  end
+
+  post '/content/upload/?' do
+    file_upload = FileUpload.create(:user_id => current_user.id, :filename => params['Filedata'][:filename], :content_type => params['Filedata'][:type])
+    file = "file_#{file_upload.id}"
+    GridFS::GridStore.open(MongoMapper.database, file , 'w') { |f|
+      f.write params['Filedata'][:tempfile].read
+    }
+    file_upload.id
+  end
+
+  get '/content/download/:id/?' do
+    # check if file exists
+    file_upload = FileUpload.find(params[:id])
+    halt unless file_upload
+
+    file = "#{ROOT_DIR}/tmp/#{params[:id]}#{File.extname(file_upload.filename)}"
+
+    unless File.exist?(file) 
+      f = File.new(file, "w")
+      GridFS::GridStore.open(MongoMapper.database, "file_#{file_upload.id}", 'r') { |ff| f.write ff.read }
+      f.close
+    end
+    send_file file, {:filename => file_upload.filename}
   end
 
   get '/content/:ctype/new' do

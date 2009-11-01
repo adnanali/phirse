@@ -1,0 +1,9 @@
+<h2> Requests </h2>
+<ul class="requests content_list">
+<% @requests.each do |request| %>
+  <li>
+  <span class="time"><%= request.created_at.strftime('%B %d, %Y') %></span>
+  <a href="/<%= request.slug %>"><%=h request.title %></a>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+  <div style="border-bottom: 1px solid gray; margin-bottom: 10px;">
+    <p>
+    ID: <a href="/user/<%= user.id %>/edit"><%=h user.id %></a>
+    </p>
+    <pre>
+    <%=h user.to_yaml %>
+    </pre>
+    </p>
+    <p></p>
+  </div>
+<% end %>

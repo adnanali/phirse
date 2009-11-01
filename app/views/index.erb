@@ -1,0 +1,3 @@
+<% @contents.each do |content| %>
+ <%= erb :"#{content_view(content.ctype, 'show')}", :locals => {:content => content}, :layout => false %>
+<% end %>

@@ -1,0 +1,10 @@
+$(".field_error").removeClass("field_error");
+$(".error_message").remove();
+<% unless @content.errors.blank? %>
+<% @content.errors.each_pair do |field, e| %>
+  $("#content_<%=field%>").addClass("field_error").after("<p class='error_message'><%= e %></p>");    
+<% end %>
+<% else %>
+  window.location = '/content/<%= @content.id %>';
+<% end %>
+

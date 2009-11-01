@@ -1,0 +1,35 @@
+<form action="/content/<%= content.id %>" class="new_content admin_form" enctype="multipart/form-data" id="new_content" method="post">
+  <p> 
+    <label for="content_title">Title</label>
+    <input id="content_title" name="content[title]" size="30" type="text" value="<%= content.title %>"/>
+  </p>
+  <p>
+    <label for="content_slug">Slug</label>
+    <input id="content_slug" name="content[slug]" size="30" type="text" value="<%= content.slug %>"/>
+  </p>
+  <p> 
+    <label for="content_content_body">Body</label>
+    <textarea cols="40" id="content_body" name="content[content][body]" rows="20"><%= content.content['body'] %></textarea>
+  </p>
+  <p> 
+    <label for="content_public">Public</label>
+    <input id="content_public" name="content[public]" type="checkbox" value="1" <%= 'checked="checked"' if content.public %> />
+  </p>
+
+  <p> 
+    <input name="commit" type="submit" value="Save" />
+  </p>
+</form>
+
+<script type="text/javascript">
+$("#new_content").submit(function() {
+  var options = {
+  dataType: 'script'
+  };
+
+  $(this).ajaxSubmit(options);
+
+  return false;
+}); 
+</script>
+

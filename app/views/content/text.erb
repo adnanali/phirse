@@ -1,0 +1,9 @@
+<h2> Texts </h2>
+<ul class="texts content_list">
+<% @texts.each do |text| %>
+  <li>
+  <span class="time"><%= text.created_at.strftime('%B %d, %Y') %></span>
+  <a href="/<%= text.slug %>"><%=h text.title %></a>
+  </li>
+<% end %>
+</ul>

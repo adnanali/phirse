@@ -1,0 +1,21 @@
+.block-left {
+	width: 35%;
+	float: left;
+	}
+.block-right {
+	width: 60%;
+	float: left;
+	}
+
+.widefat thead th a {
+	color:#d7d7d7 !important;
+	text-decoration:underline;
+}
+.error
+{
+	padding:12px;
+}
+.wrap.alternate {
+	margin-bottom:1.5em;
+	padding:0 0 0 8px;
+}

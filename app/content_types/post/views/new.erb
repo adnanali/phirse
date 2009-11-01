@@ -1,0 +1,30 @@
+<form action="/content/create" class="new_content admin_form" enctype="multipart/form-data" id="new_content" method="post">
+    <input id="content_ctype" name="content[ctype]" size="30" type="hidden" value="<%= params[:ctype] %>" />
+  <p> 
+    <label for="content_title">Title</label>
+    <input id="content_title" name="content[title]" size="30" type="text" />
+  </p>
+  <p style="display: none;"> 
+    <label for="content_slug">Slug</label>
+    <input id="content_slug" name="content[slug]" size="30" type="text" />
+  </p>
+  <p> 
+    <label for="content_content_body">Body</label>
+    <textarea cols="40" id="content_body" name="content[content][body]" rows="20"></textarea>
+  </p>
+  <p> 
+    <label for="content_public">Public</label>
+    <input name="content[public]" type="hidden" value="0" /><input id="content_public" name="content[public]" type="checkbox" value="1" />
+  </p>
+
+  <p> 
+    <input name="commit" type="submit" value="Save" />
+  </p>
+</form>
+
+<script type="text/javascript">
+$("#new_content").submit(function() {
+  $(this).ajaxSubmit({'dataType': 'script'});
+  return false;
+}); 
+</script>

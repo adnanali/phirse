@@ -1,0 +1,11 @@
+$(".field_error").removeClass("field_error");
+$(".error_message").remove();
+<% unless @user.errors.blank? %>
+<% @user.errors.each_pair do |field, e| %>
+  $("#user_<%=field%>").addClass("field_error").after("<p class='error_message'><%= e %></p>");    
+<% end %>
+<% else %>
+  <% flash[:success] = "User details saved." %>
+  window.location = '/';
+<% end %>
+

@@ -1,0 +1,29 @@
+<h2>Edit User</h2>
+
+<form action="/user/<%= user.id %>" class="new_user admin_form" enctype="multipart/form-data" id="new_user" method="post">
+  <p> 
+    <label for="user_display_name">Display Name</label>
+    <input id="user_display_name" name="user[display_name]" size="30" type="text" value="<%= user.display_name %>"/>
+  </p>
+  <p> 
+    <label for="user_email">Email</label>
+    <input id="user_email" name="user[email]" size="30" type="text" value="<%= user.email %>"/>
+  </p>
+
+  <p> 
+    <input name="commit" type="submit" value="Save" />
+  </p>
+</form>
+
+<script type="text/javascript">
+$("#new_user").submit(function() {
+  var options = {
+  dataType: 'script'
+  };
+
+  $(this).ajaxSubmit(options);
+
+  return false;
+}); 
+</script>
+

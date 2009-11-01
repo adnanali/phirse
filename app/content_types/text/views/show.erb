@@ -1,0 +1,48 @@
+<div class="post text">
+  <h2 class="post-title">
+    <a href="/<%= content.slug %>" title="<%= content.title %>"><%= content.title %></a>
+  </h2>
+  <div class="author">
+    by: <%= content.content['author'] %>
+  </div>
+
+  <!-- 
+  <p class="byline">
+    <span class="time"><%= content.content['original_language'] %></span>
+    <span class="author"><%= content.content['author'] %></span> 
+    <span class="author"><%= content.content['source'] %></a>          
+  </p>
+  -->
+
+  <div class="entry">
+    <p class="language">
+      <%= content.content['original_language'] %>
+    </p>
+    <%=markdown gfm content.content['original_words']%>
+  </div>
+
+  <% unless content.content['languages'].blank? %>
+    <% content.content['languages'].each_with_index do | lang, i | %>
+
+    <!--
+    <p class="byline">
+      <span class="time"><%= content.content['languages'][i] %></span>
+      <span class="author"><%= content.content['translators'][i] %></span> 
+      <span class="author"><%= content.content['translation_sources'][i] %></a>          
+    </p>
+    -->
+
+    <div class="entry">
+      <p class="language">
+      <%= content.content['languages'][i] %> <% unless content.content['translators'][i].blank? %>(<%= content.content['translators'][i] %>)<% end %>
+      </p>
+      <%=markdown gfm content.content['words'][i] %>
+    </div>
+    <% end %>
+  <% end %>
+
+
+
+  <div class="post-meta-data">
+  </div>
+</div>

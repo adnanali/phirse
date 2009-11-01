@@ -1,0 +1,53 @@
+/* 
+Print Stylesheet
+Author: Justin Tadlock
+Author URI: http://justintadlock.com
+Copyright (c) 2007 - 2008 Justin Tadlock
+*/
+body { 
+	color: #000;
+	background: #fff;
+	font: 11pt "Georgia", "Times New Roman", Times, serif;
+	padding: 0;
+	margin: 0;
+	}
+#body-container { margin: 0 auto; padding: 0; }
+#container { margin: 0; padding: 0; }
+#content, #home { margin: 0 auto; padding: 0; }
+a:link, a:visited {
+	color: #0C386E;
+	text-decoration: none;
+	border-bottom: #999;
+	}
+.post-title { margin: 0 0 5px 0; padding: 0; }
+.byline { font-style: italic; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+.post-meta-data {
+	font-size: 10pt;
+	color: #333;
+	}
+h1, h2, h3, h4, h5, h6 { color: #666; }
+h1 { font-size: 18pt; }
+h2 { font-size: 16pt; }
+h3 { font-size: 15pt; }
+h4 { font-size: 14pt; }
+h5 { font-size: 13pt; }
+h6 { font-size: 12pt; }
+
+#footer { border-top: 1px solid #eee; font-size: 9pt; color: #666; }
+
+/* Don't display this stuff */
+#header,
+#nav-container,
+#widget-blocks,
+.navigation-links,
+#sidebar,
+.video,
+.navigation,
+#comments-template,
+#footer img,
+#feed,
+#widget-insert-container, #widget-insert,
+#footer-container, #footer,
+.menu {
+	display: none;
+	}

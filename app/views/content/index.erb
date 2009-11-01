@@ -1,0 +1,25 @@
+<% @contents.each do |content| %>
+  <div style="border-bottom: 1px solid gray; margin-bottom: 10px;">
+    <p>
+    ID: <a href="/content/<%= content.id %>/edit"><%=h content.id %></a>
+    </p>
+    <p>
+    Title: <%=h content.title %>
+    </p>
+    <p>
+    Slug: <%=h content.slug %>
+    </p>
+    <p>
+    Type: <%=h content.type %> 
+    </p>
+    <p>
+    <%=h content.public %>
+    </p>
+    <p>
+    <pre>
+    <%=h content.content.to_yaml %>
+    </pre>
+    </p>
+    <p></p>
+  </div>
+<% end %>

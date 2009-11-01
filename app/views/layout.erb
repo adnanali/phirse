@@ -1,15 +1,165 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title><%= @title + "  - " unless @title.blank? %>[kuch sunao - the spoken word]</title>
 
-	<title>untitled</title>
-	
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link rel='alternate' type='application/rss+xml' title='RSS 2.0' href='/rss' />
+
+  <link rel='stylesheet' id='print_css-css'  href='/css/print.css' type='text/css' media='print' />
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/css/openid.css" type="text/css" media="screen" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.form.js" type="text/javascript"></script>
+  <script src="/js/jquery.openid.js" type="text/javascript"></script>
+  <script src="/js/jquery.colorbox.js" type="text/javascript"></script>
+  <script src="/js/application.js" type="text/javascript"></script>
 </head>
 
 <body>
-<%= yield %>
+<div id="body-container">
+
+  <div id='feed'>
+      <ul><li class="feed-url"><a href="/rss" title="Subscribe to the feed"><span>Subscribe by RSS</span></a></li></ul>
+    </div>
+
+  <div id="header">
+    <h1 id="site-title">
+      <a href="/" title="kuch sunao"><span>kuch sunao</span></a>
+    </h1>
+    
+    <h2 id="site-description"> go ahead, say something</h2>
+  </div>
+
+  
+  <div id="container">
+
+    <% unless flash[:error].blank? %>
+      <div class="flash flash_error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <% unless flash[:notice].blank? %>
+      <div class="flash flash_notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% unless flash[:success].blank? %>
+      <div class="flash flash_success">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+
+  <div class="single" id="content">
+    <%= yield %>
+  </div>
+    
+<div id="widget-insert-container">
+
+  <div id='widget-insert'>
+
+  
+  <div class="menu"><h2 class="section-header">Happenin&#8217; Events</h2><div id="calendar_wrap"><table id="wp-calendar" summary="Calendar">
+  <caption>October 2009</caption>
+  <thead>
+  <tr>
+
+    <th abbr="Monday" scope="col" title="Monday">M</th>
+    <th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+    <th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+    <th abbr="Thursday" scope="col" title="Thursday">T</th>
+    <th abbr="Friday" scope="col" title="Friday">F</th>
+    <th abbr="Saturday" scope="col" title="Saturday">S</th>
+
+    <th abbr="Sunday" scope="col" title="Sunday">S</th>
+  </tr>
+  </thead>
+
+  <tfoot>
+  <tr>
+    <td abbr="August" colspan="3" id="prev"><a href="http://themehybrid.com/demo/bliss/?m=200808" title="View posts for August 2008">&laquo; Aug</a></td>
+    <td class="pad">&nbsp;</td>
+
+    <td colspan="3" id="next" class="pad">&nbsp;</td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+  <tr>
+    <td colspan="3" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td>
+
+  </tr>
+  <tr>
+    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+  </tr>
+  <tr>
+
+    <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+  </tr>
+  <tr>
+    <td>19</td><td>20</td><td>21</td><td>22</td><td id="today">23</td><td>24</td><td>25</td>
+
+  </tr>
+  <tr>
+    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+    <td class="pad" colspan="1">&nbsp;</td>
+  </tr>
+  </tbody>
+
+  </table></div></div><div class="menu"><h2 class="section-header">Choose your topic</h2>   <ul>
+  <li class="cat-item cat-item-5"><a href="http://themehybrid.com/demo/bliss/?cat=5" title="The category description is not prominent by default, however some themes may show it. Actually, that would be themes like this one.
+
+To add category descriptions, you need to go to your WordPress dashboard. Then click Manage &gt; Categories. Click on the category name that you’d like to edit. Then, just enter your description.">General</a>
+</li>
+  <li class="cat-item cat-item-6"><a href="http://themehybrid.com/demo/bliss/?cat=6" title="The category description is not prominent by default, however some themes may show it. Actually, that would be themes like this one.
+
+To add category descriptions, you need to go to your WordPress dashboard. Then click Manage &gt; Categories. Click on the category name that you’d like to edit. Then, just enter your description.">HUH?</a>
+</li>
+  <li class="cat-item cat-item-8"><a href="http://themehybrid.com/demo/bliss/?cat=8" title="The category description is not prominent by default, however some themes may show it. Actually, that would be themes like this one.
+
+To add category descriptions, you need to go to your WordPress dashboard. Then click Manage &gt; Categories. Click on the category name that you’d like to edit. Then, just enter your description.">Opinion</a>
+</li>
+  <li class="cat-item cat-item-9"><a href="http://themehybrid.com/demo/bliss/?cat=9" title="The category description is not prominent by default, however some themes may show it. Actually, that would be themes like this one.
+
+To add category descriptions, you need to go to your WordPress dashboard. Then click Manage &gt; Categories. Click on the category name that you’d like to edit. Then, just enter your description.">Science &amp; Technolgy</a>
+
+</li>
+  <li class="cat-item cat-item-1"><a href="http://themehybrid.com/demo/bliss/?cat=1" title="The category description is not prominent by default, however some themes may show it. Actually, that would be themes like this one.
+
+To add category descriptions, you need to go to your WordPress dashboard. Then click Manage &gt; Categories. Click on the category name that you’d like to edit. Then, just enter your description.">Uncategorized</a>
+</li>
+    </ul>
+</div><div class="menu"><h2 class="section-header">Text can be fun too!</h2>      <div class="textwidget"><p>
+I like writing these things.  OK.  Not really, but I just want to show you an example of what a text widget looks like when applied to the theme.
+</p>
+<p>
+You can use this for anything.  Sharing recipes, random quotes, or whatever.
+</p>
+<p>
+Maybe even write a short blurb about yourself and add an image.
+
+</p></div>
+    </div>
+  
+  </div>
+
+</div>
+  </div>
+
+  <div id="footer-container">
+
+    <div id="footer">
+
+      
+      <p>Copyright &#169; 2009 <a href="http://themehybrid.com/demo/bliss" title="Bliss Theme">Bliss Theme</a>. Powered by <a class="wp-icon" href="http://wordpress.org" title="Powered by WordPress, state-of-the-art semantic personal publishing platform"><span>WordPress</span></a>.</p><p class="credit"><a class="credit" href="http://themehybrid.com/themes/bliss" title="Bliss Theme"><span>Bliss Theme</span></a> by <a href="http://justintadlock.com" title="Justin Tadlock"> Justin Tadlock</a></p><!-- Hybrid -->
+
+    </div>
+
+  </div>
+
+</div>
 </body>
 </html>

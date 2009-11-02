@@ -33,10 +33,9 @@ class Content
     u = Content.find_by_slug(self['slug'])
     puts "Slug: '#{self['slug']}' UNIQ: #{u.to_yaml}"
     if u
-      return if not self.id.blank? and u.id == self.id 
+      return if not self.id.blank? and u.id == self.id
       errors.add(:slug, 'is not unique')
     end
-    
   end
 
   def slugify

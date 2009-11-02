@@ -3,3 +3,4 @@
 db/cstore/*
 public/uploads/*
 tmp/*
+thin/*

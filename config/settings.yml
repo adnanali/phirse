@@ -19,3 +19,4 @@ defaults: &defaults
   <<: *defaults
   :mongodb:
     :database: mongo_production
+  :root_url: http://sunao.nashahai.com/

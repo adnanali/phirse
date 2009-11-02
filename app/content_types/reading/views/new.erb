@@ -9,18 +9,23 @@
     <input id="content_slug" name="content[slug]" size="30" type="text" />
   </p>
   <p> 
-    <label for="content_content_text_id">Text</label>
-    <input id="content_content_text_id" name="content[content][text_id]" size="30" type="text" />
+    <label for="content_content_text">Text</label>
+    <input id="content_content_text" name="content[text]" size="30" type="text" />
+    <input id="content_content_text_id" name="content[content][text_id]" type="hidden" />
   </p>
+  <script type="text/javascript">
+  </script>
+
+  <p> 
+    <label for="content_content_file">File</label>
+    <input id="content_content_file" name="content[content][file]" type="text" />
+  </p>
+
   <p> 
     <label for="content_content_body">Body</label>
     <textarea cols="40" id="content_body" name="content[content][body]" rows="20"></textarea>
   </p>
 
-  <p> 
-    <label for="content_file">Text</label>
-    <input id="content_file" name="content[file]" size="30" type="file" />
-  </p>
 
   <p> 
     <label for="content_public">Public</label>

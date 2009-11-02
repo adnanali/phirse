@@ -4,6 +4,7 @@ class Content
   key :ctype, String, :required => true
 
   key :title, String, :required => true
+  key :title_words, Array, :index => true
   key :slug, String
 
   key :content, Hash
@@ -21,6 +22,7 @@ class Content
   before_validation :customize
   before_validation :slugify
   before_save :set_published_date
+  before_save :set_title_words
 
   belongs_to :user
 
@@ -49,6 +51,10 @@ class Content
     puts "The time is now:"
     puts Time.now
     self['published_at'] = Time.now if self['public'] and self['published_at'].blank?
+  end
+
+  def set_title_words
+    self['title_words'] = self.title.split(/\s+/)
   end
 
   def req_custom

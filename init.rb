@@ -30,7 +30,7 @@ MongoMapper.database = settings(:mongodb)[:database]
 
 # Load all application files.
 ['helpers', 'models', 'routes'].each do |dir| 
-  Dir[root_path("app/#{dir}/**/*.rb")].each do |file|
+  Dir[root_path("app/#{dir}/**/*.rb")].sort.each do |file|
     require file
   end
 end

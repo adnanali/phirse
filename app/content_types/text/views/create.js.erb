@@ -1,14 +1,19 @@
 $(".field_error").removeClass("field_error");
 $(".error_message").remove();
 <% unless @content.errors.blank? %>
+  <% unless params[:overlay].nil? 
+    @id_add = "_" + @content.ctype
+  end %>
 <% @content.errors.each_pair do |field, e| %>
   // '<%= field %>'
   <% if field.to_s == "slug" %>
-    $("#content_<%=field%>").parent().show();
+    $("#content_<%=field%><%=@id_add%>").parent().show();
   <% end %>
-  $("#content_<%=field%>").addClass("field_error").after("<p class='error_message'><%= e %></p>");    
+  $("#content_<%=field%><%=@id_add%>").addClass("field_error").after("<p class='error_message'><%= e %></p>");    
 <% end %>
 <% else %>
+  <% unless params[:overlay].nil? %>
   window.location = '/content/<%= @content.id %>';
+  <% end %>
 <% end %>
 

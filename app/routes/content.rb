@@ -34,10 +34,18 @@ class Main
   get '/content/:ctype/new' do
     need_login
 
+    layout = true
+    layout = false if not params[:layout].nil? and params[:layout] == 'false'
+
+
     # verify the type here
     @title = "New #{params[:ctype]} Content"
 
-    erb :"#{content_view(params[:ctype], 'new')}", :locals => {:content => @content}
+    unless layout
+      @id_add = "_#{params[:ctype]}"
+    end
+
+    erb :"#{content_view(params[:ctype], 'new')}", :locals => {:content => @content}, :layout => layout
   end
 
   post '/content/create' do
@@ -65,6 +73,16 @@ class Main
   get '/content/:id/edit' do
     @content = Content.find(params[:id])
     erb :"#{content_view(@content.ctype, 'edit')}", :locals => {:content => @content}
+  end
+
+  get '/ajax/text' do
+    @contents = Content.all(:ctype => "text", :title => /#{params[:q]}/i)
+    @contents.map{|c| c.title + "|" + c.id}.join("\n")
+  end
+
+  get '/ajax/file' do
+    @contents = FileUpload.all(:filename => /#{params[:q]}/i)
+    @contents.map{|c| c.filename + "|" + c.id}.join("\n")
   end
 
 end

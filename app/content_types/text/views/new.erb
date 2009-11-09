@@ -1,38 +1,38 @@
-<form action="/content/create" class="new_content admin_form" enctype="multipart/form-data" id="new_content" method="post">
-    <input id="content_ctype" name="content[ctype]" size="30" type="hidden" value="<%= params[:ctype] %>" />
+<form action="/content/create" class="new_content admin_form" enctype="multipart/form-data" id="new_content<%=@id_add%>" method="post">
+  <input id="content_ctype<%=@id_add%>" name="content[ctype]" size="30" type="hidden" value="<%= params[:ctype] %>" />
   <p> 
-    <label for="content_title">Title</label>
-    <input id="content_title" name="content[title]" size="30" type="text" />
+    <label for="content_title<%=@id_add%>">Title</label>
+    <input id="content_title<%=@id_add%>" name="content[title]" size="30" type="text" />
   </p>
   <p style="display: none;"> 
-    <label for="content_slug">Slug</label>
-    <input id="content_slug" name="content[slug]" size="30" type="text" />
+    <label for="content_slug<%=@id_add%>">Slug</label>
+    <input id="content_slug<%=@id_add%>" name="content[slug]" size="30" type="text" />
   </p>
   <p> 
-    <label for="content_content_original_language">Original Language</label>
-    <input id="content_content_original_language" name="content[content][original_language]" size="30" type="text" />
+    <label for="content_content_original_language<%=@id_add%>">Original Language</label>
+    <input id="content_content_original_language<%=@id_add%>" name="content[content][original_language]" size="30" type="text" />
   </p>
   <p> 
-    <label for="content_content_original_words">Original Words</label>
-    <textarea cols="40" id="content_content_original_words" name="content[content][original_words]" rows="20"></textarea>
+    <label for="content_content_original_words<%=@id_add%>">Original Words</label>
+    <textarea cols="40" id="content_content_original_words<%=@id_add%>" name="content[content][original_words]" rows="20"></textarea>
   </p>
   <p> 
-    <label for="content_content_author">Author</label>
-    <input id="content_content_author" name="content[content][author]" size="30" type="text" />
+    <label for="content_content_author<%=@id_add%>">Author</label>
+    <input id="content_content_author<%=@id_add%>" name="content[content][author]" size="30" type="text" />
   </p>
   <p> 
-    <label for="content_content_source">Source</label>
-    <input id="content_content_source" name="content[content][source]" size="30" type="text" />
+    <label for="content_content_source<%=@id_add%>">Source</label>
+    <input id="content_content_source<%=@id_add%>" name="content[content][source]" size="30" type="text" />
   </p>
 
-  <div id="words_form">
+  <div id="words_form<%=@id_add%>">
   </div>
   <p> 
-    <a href="#" id="more_words">More Langauges</a>
+    <a href="#" id="more_words<%=@id_add%>">More Langauges</a>
   </p>
   <script type="text/javascript">
-    $("#more_words").click(function() {
-      $("#words_form").append(
+    $("#more_words<%=@id_add%>").click(function() {
+      $("#words_form<%=@id_add%>").append(
 '  <p> ' +
 '    <label for="content_content_languages_">Language</label>' +
 '    <input id="content_content_langauges_" name="content[content][languages][]" size="30" type="text" />' +
@@ -56,10 +56,14 @@
 
 
 
+  <% if @id_add.nil? %>
   <p> 
-    <label for="content_public">Public</label>
-    <input name="content[public]" type="hidden" value="0" /><input id="content_public" name="content[public]" type="checkbox" value="1" />
+    <label for="content_public<%=@id_add%>">Public</label>
+    <input id="content_public<%=@id_add%>" name="content[public]" type="checkbox" value="1" />
   </p>
+  <% else %>
+    <input type="hidden" name="overlay" value="1" />
+  <% end %>
 
   <p> 
     <input name="commit" type="submit" value="Save" />
@@ -67,7 +71,7 @@
 </form>
 
 <script type="text/javascript">
-$("#new_content").submit(function() {
+$("#new_content<%=@id_add%>").submit(function() {
   $(this).ajaxSubmit({'dataType': 'script'});
   return false;
 }); 

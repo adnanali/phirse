@@ -10,16 +10,25 @@
   </p>
   <p> 
     <label for="content_content_text">Text</label>
-    <input id="content_content_text" name="content[text]" size="30" type="text" />
+    <input id="content_content_text" name="content_text" size="30" type="text" />
     <input id="content_content_text_id" name="content[content][text_id]" type="hidden" />
   </p>
   <script type="text/javascript">
+    $("#content_content_text").autocomplete("/ajax/text").result(function(e, data) {
+      $("#content_content_text_id").val(data[1]);
+    });
   </script>
 
   <p> 
     <label for="content_content_file">File</label>
-    <input id="content_content_file" name="content[content][file]" type="text" />
+    <input id="content_content_file" name="content_content_file" type="text" />
+    <input id="content_content_file_id" name="content[content][file_id]" type="hidden" />
   </p>
+  <script type="text/javascript">
+    $("#content_content_file").autocomplete("/ajax/file").result(function(e, data) {
+      $("#content_content_file_id").val(data[1]);
+    });
+  </script>
 
   <p> 
     <label for="content_content_body">Body</label>

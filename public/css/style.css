@@ -591,3 +591,6 @@ body {
 .content_list li {
   margin: 15px 0;
 }
+
+#cboxOverlay{background:#000;}
+#cboxLoadedContent{background:#fff; padding:18px;}
